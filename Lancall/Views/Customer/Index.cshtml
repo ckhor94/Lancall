@@ -1,7 +1,21 @@
-﻿
+﻿<!--This page needs fixing. Either add the viewmodel customer class (by rewatching that lecture
+    or figure out waht da hell tables r and what enumerables are)-->
+{
+  
+}
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Customer Database";
 }
 
-<h2>Index</h2>
+@if (Model.Customer.Count == 0)
+{
+    <p>No customers to show</p>
+}
+else
+{
+     foreach (var customer in Model.Customer)
+     {
+         <h2>Model.Customer.Name</h2>
+     }
+}
 
