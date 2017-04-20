@@ -9,16 +9,30 @@ namespace Lancall.Controllers
 {
     public class CustomerController : Controller
     {
-        // GET: Customer
-        public ActionResult Index()
+        public ViewResult Index()
         {
-            var Customer = new List<Customer>
-            {
-                new Customer {Name = "Bob"},
-                new Customer {Name = "Harry"}
-            };
+            var customer = GetCustomers();
 
-            return View();
+            return View(customer);   
+        }
+
+        public ActionResult Details(int id)
+        {
+            var customer = GetCustomers().SingleOrDefault(c => c.Id == id);
+
+            if (customer == null)
+                return HttpNotFound();
+
+            return View(customer);
+        }
+
+        private IEnumerable<Customer> GetCustomers()
+        {
+            return new List<Customer>
+            {
+                new Customer { Id = 1, Name = "Bob"},
+                new Customer { Id = 2, Name = "Harry"}
+            };
         }
     }
 }

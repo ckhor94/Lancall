@@ -1,7 +1,31 @@
-﻿
+﻿@using Lancall.Models
+@model IEnumerable<Lancall.Models.Staff>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Staff";
 }
 
-<h2>Index</h2>
+<h2>Staff list</h2>
+
+@if (!Model.Any())
+{
+    <p>No staff to display</p>
+}
+else
+{
+    <table class="table table-bordered table-hover">
+        <thread>
+            <tr>
+                <th>Staff</th>
+            </tr>
+        </thread>
+        <tbody>
+            @foreach (var staff in Model)
+            {
+                <tr>
+                    <td>@staff.Name</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
 

@@ -1,21 +1,28 @@
-﻿<!--This page needs fixing. Either add the viewmodel customer class (by rewatching that lecture
-    or figure out waht da hell tables r and what enumerables are)-->
-{
-  
-}
+﻿@model IEnumerable<Lancall.Models.Customer>
 @{
     ViewBag.Title = "Customer Database";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@if (Model.Customer.Count == 0)
+<h2>Customers</h2>
+@if (!Model.Any())
 {
     <p>No customers to show</p>
 }
 else
 {
-     foreach (var customer in Model.Customer)
-     {
-         <h2>Model.Customer.Name</h2>
-     }
+    <table class="table table-bordered table-hover">
+        <thread>
+            <th>Customer</th>
+        </thread>
+        <tbody>
+        @foreach (var customer in Model)
+        {
+            <tr>
+                <td>@Html.ActionLink(customer.Name, "Details", "Customer", new { id = customer.Id }, null)</td>
+            </tr>
+        }
+        </tbody>
+    </table>
 }
 
